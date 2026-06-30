@@ -1,0 +1,50 @@
+import { FlatList, View, Image,Text, StyleSheet } from 'react-native';
+
+const superhero = [
+  { id: '1', name: 'Superman',
+    img: 'https://s.isanook.com/mv/0/ud/16/80853/80853-20180913050112-29ca67c.jpg'},
+  { id: '2', name: 'Batman',
+    img: 'https://static.trueplookpanya.com/tppy/member/m_677500_680000/677567/cms/images/batman4ever.jpg'},
+  { id: '3', name: 'The Flash',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw9_PgDt7XRwhFko0nDvl2sqPzHNz15ifBsf9qNw13mZzPfNv3pb3wDKmw&s=10'},
+  { id: '4', name: 'Iron Man',
+    img: 'https://m.media-amazon.com/images/M/MV5BMTI5ODY5NTUzMF5BMl5BanBnXkFtZTcwOTAzNTIzMw@@._V1_.jpg'},
+  { id: '5', name: 'Thor',
+    img: 'https://s.isanook.com/mv/0/ud/24/123377/865231.jpg'},
+  ];
+
+export default function App() {    
+    return  (
+      <FlatList data={superhero}
+      keyExtractor={(it) => it.id}
+      contentContainerStyle={s.listContainer}
+      renderItem={({ item }) => (
+        <View style={s.row}>
+          <Image source={{ uri: item.img }}
+          style={s.avatar} />
+          <Text style={s.name}>{item.name}</Text>
+        </View>
+      )} /> 
+    );
+}
+
+const s = StyleSheet.create({
+  listContainer:{
+    paddingTop: 80,
+    paddingHorizontal: 10,
+  },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: 20,
+      borderBottomWidth: 5,
+      borderBottomColor: '#3dcbe4',
+    },
+    avatar: {
+      width: 50,
+      height: 50,
+      borderRadius: 20,
+      marginRight: 20,
+    },
+    name: { fontSize: 23 },
+});
